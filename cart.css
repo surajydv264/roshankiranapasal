@@ -1,0 +1,169 @@
+/* ===== General Reset ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f4f4f4;
+    color: #333;
+}
+
+/* ===== HEADER ===== */
+header {
+    background: #0f5132;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    align-items: center;
+}
+
+header nav ul li a,
+header nav ul li button {
+    color: #fff;
+    text-decoration: none;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+header nav ul li a.active,
+header nav ul li a:hover,
+header nav ul li button:hover {
+    color: #ffd700;
+}
+
+/* ===== MAIN CART SECTION ===== */
+.cart-section {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.cart-section h2 {
+    text-align: center;
+    color: #0f5132;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+table th {
+    background: #0f5132;
+    color: #fff;
+    font-weight: 600;
+}
+
+table td button {
+    padding: 4px 10px;
+    margin: 0 4px;
+    background: #0f5132;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+table td button:hover {
+    background: #145c38;
+}
+
+#total {
+    text-align: right;
+    font-size: 20px;
+    color: #0f5132;
+    font-weight: bold;
+}
+
+/* ===== ORDER BUTTONS ===== */
+.order-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.order-buttons .btn {
+    padding: 12px 20px;
+    background: #0f5132;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.order-buttons .btn:hover {
+    background: #145c38;
+}
+
+/* ===== EMPTY CART ===== */
+table td[colspan="3"] {
+    font-style: italic;
+    color: #777;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+    table th, table td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    #total {
+        font-size: 18px;
+    }
+
+    .order-buttons {
+        justify-content: center;
+    }
+
+    .order-buttons .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+/* Hamburger */
+.hamburger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #fff;
+}

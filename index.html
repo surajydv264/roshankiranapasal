@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Grocery Shop</title>
+   <link rel="stylesheet" href="sss.css">
+<link rel="stylesheet" href="style.css">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div class="logo">ROSHAN KIRANA STORE</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#contact" >Contact</a></li>
+                <li><a href="cart.html" class="cart"><i class='bx bx-cart'></i> Cart</a></li>
+                <li>
+    <a href="https://www.facebook.com/YourPage" target="_blank"><i class='bx bxl-facebook'></i></a></li>
+    <li>
+  <button class="logoutbtn" onclick="
+    localStorage.removeItem('loggedUser');
+    location='login.html';
+  ">Logout</i></button>
+</li>
+
+
+            </ul>
+            <div class="hamburger">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+   <section class="slider">
+    <img src="https://cdn.grabon.in/gograbon/images/web-images/uploads/1618548899692/groceries-offers.jpg" class="slide active" alt="Image 1">
+    <img src="https://d168jcr2cillca.cloudfront.net/uploadimages/coupons/10473-AskmeGrocery_Banner.jpg" class="slide" alt="Image 2">
+    <img src="https://lh4.googleusercontent.com/proxy/V2bLSmN1p2nxB-oBDcEs79hIXWGGKX-qluA5kXPmaxQZeQaTjRkJb5vfSDEUPs0PoMqcZHP-j5g0uWnWgRU" class="slide" alt="Image 3">
+    <img src="https://hips.hearstapps.com/hmg-prod/images/gh-best-skincare-products-6557978b58b57.png?crop=0.6666666666666666xw:1xh;center,top&resize=1200:*" class="slide" alt="Image 2">
+</section>
+
+<script src="script.js"></script>
+<script src="cart.js"></script>
+
+    <section class="hero">
+        
+        <a href="#products" class="btn">Shop Now</a>
+    </section>
+
+    <section class="products" id="products">
+        <h2>Our Products</h2>
+        <div class="product-container">
+            <div class="product-card">
+                <img src="https://cdn11.bigcommerce.com/s-cjl7yda9yk/images/stencil/1280x1280/products/769/1180/Mix_daal__49827.1696137695.png?c=1" alt="daal">
+                <h3>Mix daal 1kg</h3>
+                <p>Rs. 240 / kg</p>
+             <button  class="btn add-to-cart"
+data-name="Mix Daal 1kg"
+data-price="240">Add to Cart</button>
+
+            </div>
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1q1m96dUzOGb-IwUEYlOhkMjIPz3pAAw7ww&s" alt="soap">
+                <h3>Lifeboy</h3>
+                <p>Rs.30</p>
+                <a href="#" class="btn add-to-cart"
+data-name="Lifeboy"
+data-price="Rs.30">Add to Cart</a>
+
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/61Nrz8y6O-L._AC_UF894,1000_QL80_.jpg" alt="bouborn">
+                <h3>BORNBON</h3>
+                <p>Rs.50</p>
+                <a href="#" class="btn add-to-cart"
+data-name="BOURBON"
+data-price="Rs.50">Add to Cart</a>
+
+            </div>
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9walu94fmppw4m1krg6sZMiMPvL71hxWiow&s" alt="oreo">
+                <h3>oreo</h3>
+                <p>Rs.20</p>
+                <a href="#" class="btn add-to-cart"
+data-name="Orea"
+data-price="Rs.20">Add to Cart</a>
+
+            </div>
+
+            <script src="auth.js"></script>
+
+
+
+
+
+
+        
+
+        </div>
+    </section>
+      <section class="hero">
+        
+        <a href="#" class="btn">MORE...</a>
+    </section>
+
+
+    <!-- Contact Section -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <h2>Contact Us</h2>
+    <p>Have questions or want to place an order? Reach out to us!</p>
+
+    <!-- Contact Info Boxes -->
+    <div class="contact-boxes">
+      <!-- Address -->
+      <div class="contact-box">
+        <i class='bx bx-map'></i>
+        <h3>Address</h3>
+        <a link href="https://maps.app.goo.gl/asmFbj1K5dzG5wyn8"> <p>Haranhiya Chauka - 3, Bara, Nepal</p></a> 
+       
+      </div>
+
+      <!-- Phone -->
+      <div class="contact-box">
+        <i class='bx bx-phone'></i>
+        <h3>Phone</h3>
+        <p>+977 9746818706</p>
+      </div>
+
+      <!-- Email -->
+      <div class="contact-box">
+        <i class='bx bx-envelope'></i>
+        <h3>Email</h3>
+        <p>surajydv264@gmail.com</p>
+      </div>
+    </div>
+
+    <!-- Netlify Contact Form -->
+    <div class="contact-form">
+      <form name="contact" method="POST" data-netlify="true">
+        <!-- Required hidden field for Netlify -->
+        <input type="hidden" name="form-name" value="contact">
+
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+    <footer>
+    <div class="footer-container">
+        <!-- About Section -->
+        <div class="footer-section about">
+            <h3>About GroceryShop</h3>
+            <p>We deliver fresh fruits, vegetables, dairy products, and daily essentials right to your doorstep. Quality, freshness, and customer satisfaction are our top priorities.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-section contact">
+            <h3>Contact Us</h3>
+            <p>📍 Subran Rural Municipality, Bara, Nepal</p>
+            <p>📞 9746818706</p>
+            <p>✉️ surajydv264@gmail.com</p>
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer-section social">
+            <h3>Follow Us</h3>
+            <a href="https://www.facebook.com/YourPage" target="_blank"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+            <a href="#"><i class='bx bxl-youtube'></i></a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Suraj Yadav. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/69662b3401fa4519826fd487/1jerhhi0o';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+
+
+<script src="auth.js"></script>
+<script>
+  checkLoggedIn(); // Show user name when logged in
+</script>
+
+</body>
+</html>
+

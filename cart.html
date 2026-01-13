@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart - Grocery Shop</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+<script src="auth.js"></script>
+<script src="cart.js"></script>
+<header>
+  <div class="logo">ROSHAN KIRANA STORE</div>
+  <nav>
+            <ul class="nav-links">
+                <li><a href="index.html" >Home</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#contact" >Contact</a></li>
+                <li><a href="cart.html" class="active"><i class='bx bx-cart'></i> Cart</a></li>
+                <li>
+    <a href="https://www.facebook.com/YourPage" target="_blank"><i class='bx bxl-facebook'></i></a></li>
+    <li>
+  <button class="logout-btn" onclick="
+    localStorage.removeItem('loggedUser');
+    location='login.html';
+  "><i class='bx bxl-log-out'></i></button>
+</li>
+
+
+            </ul>
+            <div class="hamburger">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+</header>
+
+<main>
+  <section class="cart-section">
+    <h2>Your Cart</h2>
+
+    <table id="cart">
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+      <!-- Cart items will be injected here -->
+    </table>
+
+    <h3 id="total">Total: Rs. 0</h3>
+
+    <div class="order-buttons">
+      <a id="whatsapp" href="#" target="_blank" class="btn">Order via WhatsApp</a>
+      <button id="clearCart" class="btn">Clear Cart</button>
+    </div>
+  </section>
+</main>
+
+<script>
+  // ======= CHECK LOGIN =======
+  let user = JSON.parse(localStorage.getItem("loggedUser"));
+  if (!user) {
+    alert("Please login first!");
+    location = "login.html";
+  }
+
+  // ======= LOAD CART =======
+  let cart = JSON.parse(localStorage.getItem("cart_" + user.email)) || [];
+  let table = document.getElementById("cart");
+  let total = 0;
+  let msg = `Order Details for ${user.name}:%0A`;
+
+  function renderCart() {
+    table.innerHTML = `
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    `;
+    total = 0;
+    msg = `Order Details for ${user.name}:%0A`;
+
+    if (cart.length === 0) {
+      table.innerHTML += `<tr><td colspan="3">Your cart is empty</td></tr>`;
+    } else {
+      cart.forEach((item, index) => {
+        total += item.qty * item.price;
+        table.innerHTML += `
+          <tr>
+            <td>${item.name}</td>
+            <td>
+              <button onclick="changeQty(${index}, -1)">-</button>
+              ${item.qty}
+              <button onclick="changeQty(${index}, 1)">+</button>
+            </td>
+            <td>Rs.${item.qty * item.price}</td>
+          </tr>
+        `;
+        msg += `${item.name} x ${item.qty} = Rs.${item.qty * item.price}%0A`;
+      });
+    }
+
+    document.getElementById("total").innerText = "Total: Rs. " + total;
+    msg += "Total Rs." + total;
+    document.getElementById("whatsapp").href = "https://wa.me/9779746818706?text=" + msg;
+  }
+
+  renderCart();
+
+  // ======= CHANGE QUANTITY =======
+  function changeQty(index, delta) {
+    cart[index].qty += delta;
+    if (cart[index].qty < 1) cart[index].qty = 1;
+    localStorage.setItem("cart_" + user.email, JSON.stringify(cart));
+    renderCart();
+  }
+
+  // ======= CLEAR CART =======
+  document.getElementById("clearCart").addEventListener("click", () => {
+    if (confirm("Are you sure you want to clear your cart?")) {
+      localStorage.removeItem("cart_" + user.email);
+      cart = [];
+      renderCart();
+    }
+  });
+
+  // ======= LOGOUT =======
+  function logout() {
+    localStorage.removeItem("loggedUser");
+    location = "login.html";
+  }
+</script>
+
+</body>
+</html>
