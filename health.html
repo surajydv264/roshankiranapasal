@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dhanmantri Nutrition</title>
+
+<link rel="stylesheet" href="design.css">
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+<script src="script.js"></script>
+<!-- HEADER -->
+<header>
+    <div class="logo">
+        <img src="logo.jpeg" alt="logo">
+        <h2>Dhanmantri Nutrition PVT.LTD</h2>
+    </div>
+
+    <nav id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+       <div class="dropdown">
+    <button class="dropbtn">Products ▾</button>
+    <div class="dropdown-content">
+        <a href="health.html" onclick="filterProducts('human')"></a>
+        <a href="#" onclick="filterProducts('body')"></a>
+        <a href="#" onclick="filterProducts('organic')"></a>
+        <a href="#" onclick="filterProducts('home')"></a>
+        <a href="#" onclick="filterProducts('animal')"></a>
+    </div>
+</div>
+        <a href="index.html#contact">Contact Us</a>
+
+        <div class="cart-icon" onclick="openCart()">
+    <i class="fa fa-shopping-cart"></i>
+
+    <span id="cartCount" class="cart-count">0</span>
+</div>
+
+        <div class="icons">
+           
+           
+           <i class="fas fa-user" onclick="openLogin()"></i>
+        </div>
+    </nav>
+
+    <!-- Hamburger -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+</header>
+
+
+<script>
+function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("active");
+}
+</script>
+<script src="script.js"></script>
+
+<div id="loginModal" class="modal">
+
+  <div class="modal-box">
+
+    <span class="close" onclick="closeLogin()">&times;</span>
+
+    <h2>Login</h2>
+
+    <select id="role">
+        <option value="customer">Customer</option>
+        <option value="employee">Employee</option>
+    </select>
+
+    <input type="text" id="name" placeholder="Name">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="loginUser()">Login</button>
+    <button onclick="loginUser()">Forget Password</button>
+
+    <p onclick="showRegister()">Not registered? Register</p>
+
+    <!-- REGISTER -->
+    <div id="registerBox" style="display:none;">
+        <h3>Register</h3>
+
+        <input type="text" id="rname" placeholder="Name">
+        <input type="email" id="remail" placeholder="Email">
+        <input type="password" id="rpass" placeholder="Password">
+        <input type="password" id="rpass" placeholder="Confirm Password">
+
+
+        <button onclick="registerUser()">Register</button>
+    </div>
+
+
+  </div>
+</div>
+
+
+<div id="cartPanel" class="cart-panel">
+
+    <div class="cart-header">
+        <h3>Your Cart</h3>
+        <span onclick="closeCart()" class="close-cart">&times;</span>
+    </div>
+
+    <!-- SCROLL FIX WRAPPER -->
+    <div class="cart-body">
+
+        <table id="cartTable">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="cartBody">
+                <!-- items here -->
+            </tbody>
+        </table>
+
+        <h3 id="totalPrice">Total: Rs 0</h3>
+
+<button class="checkout-btn" onclick="checkout()">
+    Proceed to Checkout
+</button>
+
+    </div>
+
+</div>
+<div class="search-box">
+    
+    <div class="search-input">
+        <span class="icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search products...">
+    </div>
+
+</div>
+
+<p id="noResult">No products found 😔</p>
+<section class="product-section">
+    <h2 class="section-title">Our Premium Products</h2>
+
+    <!-- PRODUCT 1 -->
+    <div class="product-card">
+        <div class="product-image">
+            <img src="logo.jpeg" alt="Herbal Health Booster">
+        </div>
+
+        <div class="product-details">
+            <h3>Herbal Health Booster</h3>
+
+            <p class="desc">
+                This premium supplement is crafted using natural herbal extracts,
+                essential vitamins, and minerals that support immunity, boost energy,
+                and improve overall wellness. It is free from harmful chemicals and
+                designed for safe daily use.
+            </p>
+
+            <div class="price">
+                <span class="old">Rs. 1500</span>
+                <span class="new">Rs. 999</span>
+            </div>
+
+            <button class="cart-btn" 
+                onclick="addToCart('Herbal Capsules',500,'images/p1.jpg')" >
+                Add to Cart
+            </button>
+        </div>
+    </div>
+
+    <!-- PRODUCT 2 -->
+    <div class="product-card">
+        <div class="product-image">
+            <img src="product2.jpg" alt="Organic Farming Booster">
+        </div>
+
+        <div class="product-details">
+            <h3>Organic Farming Booster</h3>
+
+            <p class="desc">
+                A powerful eco-friendly solution enriched with bio-nutrients that
+                enhances soil fertility, improves crop yield, and supports sustainable
+                farming without harmful synthetic chemicals.
+            </p>
+
+            <div class="price">
+                <span class="old">Rs. 1200</span>
+                <span class="new">Rs. 850</span>
+            </div>
+
+            <button class="cart-btn" 
+                onclick="addToCart('Herbal Capsules',500,'images/p1.jpg')" >
+                Add to Cart
+            </button>
+        </div>
+    </div>
+
+     <!-- PRODUCT 2 -->
+    <div class="product-card">
+        <div class="product-image">
+            <img src="product2.jpg" alt="Organic Farming Booster">
+        </div>
+
+        <div class="product-details">
+            <h3>Organic Farming Booster</h3>
+
+            <p class="desc">
+                A powerful eco-friendly solution enriched with bio-nutrients that
+                enhances soil fertility, improves crop yield, and supports sustainable
+                farming without harmful synthetic chemicals.
+            </p>
+
+            <div class="price">
+                <span class="old">Rs. 1200</span>
+                <span class="new">Rs. 850</span>
+            </div>
+
+            <button class="cart-btn" 
+                onclick="addToCart('Herbal Capsules',500,'images/p1.jpg')" >
+                Add to Cart
+            </button>
+        </div>
+    </div>
+
+     <!-- PRODUCT 2 -->
+    <div class="product-card">
+        <div class="product-image">
+            <img src="product2.jpg" alt="Organic Farming Booster">
+        </div>
+
+        <div class="product-details">
+            <h3>Organic Farming Booster</h3>
+
+            <p class="desc">
+                A powerful eco-friendly solution enriched with bio-nutrients that
+                enhances soil fertility, improves crop yield, and supports sustainable
+                farming without harmful synthetic chemicals.
+            </p>
+
+            <div class="price">
+                <span class="old">Rs. 1200</span>
+                <span class="new">Rs. 850</span>
+            </div>
+
+            <button class="cart-btn" 
+                onclick="addToCart('Herbal Capsules',500,'images/p1.jpg')" >
+                Add to Cart
+            </button>
+        </div>
+    </div>
+
+     <!-- PRODUCT 2 -->
+    <div class="product-card">
+        <div class="product-image">
+            <img src="dd.jpeg" alt="Organic Farming Booster">
+        </div>
+
+        <div class="product-details">
+            <h3>Organic Farming Booster</h3>
+
+            <p class="desc">
+                A powerful eco-friendly solution enriched with bio-nutrients that
+                enhances soil fertility, improves crop yield, and supports sustainable
+                farming without harmful synthetic chemicals.A powerful eco-friendly solution enriched with bio-nutrients that
+                enhances soil fertility, improves crop yield, and supports sustainable
+                farming without harmful synthetic chemicals.A powerful eco-friendly solution enriched with bio-nutrients that
+                enhances soil fertility, improves crop yield, and supports sustainable
+                farming without harmful synthetic chemicals.A powerful eco-friendly solution enriched with bio-nutrients that
+                enhances soil fertility, improves crop yield, and supports sustainable
+                farming without harmful synthetic chemicals.
+            </p>
+
+            <div class="price">
+                <span class="old">Rs. 1200</span>
+                <span class="new">Rs. 850</span>
+            </div>
+
+            <button class="cart-btn" 
+                onclick="addToCart('Herbal Capsules',500,'images/p1.jpg')" >
+                Add to Cart
+            </button>
+        </div>
+    </div>
+
+     <!-- PRODUCT 2 -->
+    <div class="product-card">
+        <div class="product-image">
+            <img src="product2.jpg" alt="Organic Farming Booster">
+        </div>
+
+        <div class="product-details">
+            <h3>Organic Farming Booster</h3>
+
+            <p class="desc">
+                A powerful eco-friendly solution enriched with bio-nutrients that
+                enhances soil fertility, improves crop yield, and supports sustainable
+                farming without harmful synthetic chemicals.
+            </p>
+
+            <div class="price">
+                <span class="old">Rs. 1200</span>
+                <span class="new">Rs. 850</span>
+            </div>
+
+            <button class="cart-btn" 
+                onclick="addToCart('Herbal Capsules',500,'images/p1.jpg')" >
+                Add to Cart
+            </button>
+        </div>
+    </div>
+
+     <!-- PRODUCT 2 -->
+    <div class="product-card">
+        <div class="product-image">
+            <img src="dd.jpeg" alt="Organic Farming Booster">
+        </div>
+
+        <div class="product-details">
+            <h3>health animal</h3>
+
+            <p class="desc">
+                A powerful eco-friendly solution enriched with bio-nutrients that
+                enhances soil fertility, improves crop yield, and supports sustainable
+                farming without harmful synthetic chemicals.
+            </p>
+
+            <div class="price">
+                <span class="old">Rs. 1200</span>
+                <span class="new">Rs. 850</span>
+            </div>
+
+            <button class="cart-btn" 
+                onclick="addToCart('Herbal Capsules',500,'images/p1.jpg')" >
+                Add to Cart
+            </button>
+        </div>
+    </div>
+
+</section>
+
+    
+
+<script src="script.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<footer class="big-footer">
+
+    <!-- MAIN FOOTER CONTENT FIRST -->
+    <div class="footer-main">
+
+        <div class="footer-col">
+            <h3>About Company</h3>
+            <p>
+                Dhanmantri Nutritions PVT. LTD provides high-quality health supplements, 
+                organic farming, body care and animal nutrition products.
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="index.html#products">Products</a>
+            <a href="about.html">About</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+
+        <div class="footer-col">
+            <h3>Services</h3>
+            <a href="#">Health Supplements</a>
+            <a href="#">Organic Farming</a>
+            <a href="#">Body & Bath</a>
+            <a href="#">Animal Feed</a>
+        </div>
+
+        <div class="footer-col">
+            <h3>Contact Info</h3>
+            <p>📍 Gaur-1, Rautahat, Nepal</p>
+            <p>📞 +977 9864844649</p>
+            <p>📧 dhanmantrinutition@gmail.com</p>
+
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i>  FACEBOOK</a>
+                <a href="https://wa.me/9779864844649"><i class="fab fa-whatsapp">  WHATSAPP</i></a>
+                <a href="#"><i class="fab fa-instagram"></i>  INSTAGRAM</a>
+                <a href="#"><i class="fab fa-telegram"></i>  TELEGRAM</a>
+                <a href="#"><i class="fab fa-twitter"></i>  TWITTER</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 🔥 SUBSCRIBE BAR (NOW AT BOTTOM) -->
+    <div class="subscribe-bar">
+
+        <div class="subscribe-text">
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Get updates, offers & latest news</p>
+        </div>
+
+        <form class="subscribe-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+
+    </div>
+
+   <div class="footer-bottom">
+
+    <div class="footer-left">
+        <img src="logo.jpeg" alt="Company Logo" class="footer-logo">
+        <span>© 2026 Dhanmantri Nutritions PVT. LTD</span>
+    </div>
+
+    <div class="footer-right">
+        <p>All Rights Reserved</p>
+    </div>
+
+</div>
+</footer>
+</body>
+</html>
+
